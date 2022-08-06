@@ -13,7 +13,7 @@ This project prompts the user to login in order to receive a jwt authorization t
 Setup .env variables  
 Download node_modules for this project
 ### To run backend API
-cd api
+cd api  
 npm start
 
 
