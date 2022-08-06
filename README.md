@@ -10,7 +10,7 @@ This project prompts the user to login in order to receive a jwt authorization t
 * dotenv >= 16.0.1
 
 # Getting Started
-Setup .env variables
+Setup .env variables  
 Download node_modules for this project
 ### To run backend API
 cd api
