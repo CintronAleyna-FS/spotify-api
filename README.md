@@ -11,7 +11,7 @@ This project prompts the user to login in order to receive a jwt authorization t
 
 # Getting Started
 Setup .env variables  
-Download node_modules for this project
+Use ```npm install``` or ```yarn install``` to download node_modules for this project
 ### To run backend API
 cd api  
 npm start
