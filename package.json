@@ -1,0 +1,24 @@
+{
+  "name": "spotify-api",
+  "version": "1.0.0",
+  "description": "This project prompts the user to login in order to receive a jwt authorization token. Once authorized, the user is able to make global searches to 3 different endpoints using [Spotify Web API](https://developer.spotify.com/documentation/web-api/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CintronAleyna-FS/spotify-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CintronAleyna-FS/spotify-api/issues"
+  },
+  "homepage": "https://github.com/CintronAleyna-FS/spotify-api#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  }
+}

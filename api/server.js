@@ -17,7 +17,7 @@ db.on('error', error => console.error(error))
 db.once('open', () => console.log('Database connection established'))
 
 // routes
-const userRouter = require('./routes/users');
+const userRouter = require('./routes/AuthRoute');
 app.use('/users', userRouter)
 
 // server running
