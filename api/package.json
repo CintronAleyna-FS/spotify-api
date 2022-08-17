@@ -6,15 +6,19 @@
   "scripts": {
     "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-    },
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body": "^5.1.0",
+    "body-parser": "^1.20.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "mongoose": "^6.5.1",
     "nodemon": "^2.0.19",
-    "path": "^0.12.7"
+    "parser": "^0.1.4",
+    "path": "^0.12.7",
+    "spotify-web-api-node": "^5.0.2"
   }
 }

@@ -2,11 +2,14 @@ const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
 const path = require('path');
-const cors = require('cors')
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const app = express();
+app.use(cors())
+app.use(bodyParser.json())
 
-const PORT = process.env.PORT || 3001;
+const PORT = 3001;
 
 const DATABASE_URL = process.env.DATABASE_URL;
 
@@ -17,8 +20,10 @@ db.on('error', error => console.error(error))
 db.once('open', () => console.log('Database connection established'))
 
 // routes
-const userRouter = require('./routes/AuthRoute');
-app.use('/users', userRouter)
+const loginRouter = require('./routes/AuthRoute');
+app.use('/', loginRouter)
+
+
 
 // server running
 app.listen(PORT, () => {
