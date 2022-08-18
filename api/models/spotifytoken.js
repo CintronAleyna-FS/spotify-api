@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 
 const SpotifyTokenSchema = new mongoose.Schema({
-    token: {
+    accessToken: {
+        type: String
+    },
+    refreshToken: {
         type: String
     },
     expires_in: {

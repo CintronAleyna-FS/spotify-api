@@ -8,13 +8,21 @@ This project prompts the user to login in order to receive a jwt authorization t
 * Chrome/Firefox/Safari/Edge >= Latest 2 major versions
 * Express >= v4.18.1
 * dotenv >= 16.0.1
+* Cors >=  2.8.5
+* body-parser >= 1.20.0
+* spotify-web-api-node >= 5.0.2
 
 # Getting Started
 Setup .env variables  
 Download node_modules for this project
+Run both Backend api and Frontend spotify-react
+
 ### To run backend API
-cd api  
-npm start
+`cd api   
+npm start`
+### To run backend API
+`cd spotify-react    
+npm start`
 
 
 # Links
