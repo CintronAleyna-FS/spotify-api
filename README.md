@@ -18,10 +18,10 @@ Download node_modules for this project
 Run both Backend api and Frontend spotify-react
 
 ### To run backend API
-`cd api
+`cd api   
 npm start`
 ### To run backend API
-`cd spotify-react
+`cd spotify-react    
 npm start`
 
 
