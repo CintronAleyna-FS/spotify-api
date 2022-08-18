@@ -20,7 +20,7 @@ Run both Backend api and Frontend spotify-react
 ### To run backend API
 `cd api   
 npm start`
-### To run backend API
+### To run Frontend React App
 `cd spotify-react    
 npm start`
 
