@@ -30,4 +30,4 @@ npm start`
 * [http://localhost:3001](http://localhost:3001) - Link to the backend (Express) API.
 * [http://localhost:3001/spotify/v1](http://localhost:3001/spotify/v1) - Link to the Spotify API middleware.
 * [http://localhost:3001/spotify/v1/status](http://localhost:3001/spotify/v1/status) - Endpoint to check the status of our application's JWT. 
-* [http://localhost:3001/spotify/v1/login](http://localhost:3001/spotify/v1/login) - Endpoint request a new JWT from Spotify using the authentication workflow
+* [http://localhost:3001/spotify/v1/login](http://localhost:3001/login) - Endpoint request a new JWT from Spotify using the authentication workflow
