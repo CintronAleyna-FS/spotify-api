@@ -7,10 +7,10 @@ function Dashboard({code}) {
     const [search, setSearch] = useState("")
     const [searchResults, setSearchResults] = useState("")
 
-    let ignore = false;
-    useEffect(() => {
-        if(!search) return
-        if(!ignore){
+    const handleKeyPress = (e) => {
+        if(e.key === 'Enter'){
+            if(!search) return
+            else{
             axios.post('http://localhost:3001/search', {
             search
             }).then (res => {
@@ -18,11 +18,9 @@ function Dashboard({code}) {
             }).catch((err) => {
                 console.log(err)
             })
+            }
         }
-        return () => {
-            ignore = true;
-        }
-    }, [search]) 
+    }
     return (
         <div>
             <p style={styles.p}>Authorized</p>
@@ -31,6 +29,7 @@ function Dashboard({code}) {
                     placeholder="Search"
                     value={search}
                     onChange={e => setSearch(e.target.value)}
+                    onKeyPress={handleKeyPress}
                 />
             </div>
         </div>

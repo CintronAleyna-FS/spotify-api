@@ -26,7 +26,7 @@ exports.jwt = async (req, res, next) => {
                 console.log('The access token has been refreshed!');
                 console.log('refreshed token!' + data.body['access_token']);
                 req.token.accessToken = data.body['access_token'];
-                req.token.expires_in = (new Date().getTime()) + req.token.expires_in;
+                req.token.expires_in = (new Date().getTime()) + (req.token.expires_in * 100);
                 req.token.save();
             }).catch((error) => {
                 res.status(400).json({ message: error.message })
@@ -51,7 +51,7 @@ exports.login = (req, res, next) => {
         const spotifyToken = new SpotifyToken({
             accessToken: data.body.access_token,
             refreshToken: data.body.refresh_token,
-            expires_in: (new Date().getTime()) + data.body.expires_in,
+            expires_in: (new Date().getTime()) + (data.body.expires_in * 100),
         })
         try {
             const newSpotifyToken = spotifyToken.save()
