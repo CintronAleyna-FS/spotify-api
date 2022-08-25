@@ -14,7 +14,8 @@ This project prompts the user to login in order to receive a jwt authorization t
 
 # Getting Started
 Setup .env variables  
-Download node_modules for this project
+Download node_modules from api and spotify-react folders.
+`npm install`
 Run both Backend api and Frontend spotify-react
 
 ### To run backend API
@@ -28,6 +29,5 @@ npm start`
 # Links
 * [http://localhost:3000](http://localhost:3000) - Link to the frontend application. This is the homepage.
 * [http://localhost:3001](http://localhost:3001) - Link to the backend (Express) API.
-* [http://localhost:3001/spotify/v1](http://localhost:3001/spotify/v1) - Link to the Spotify API middleware.
-* [http://localhost:3001/spotify/v1/status](http://localhost:3001/spotify/v1/status) - Endpoint to check the status of our application's JWT. 
-* [http://localhost:3001/spotify/v1/login](http://localhost:3001/login) - Endpoint request a new JWT from Spotify using the authentication workflow
+* [http://localhost:3001/search](http://localhost:3001/search) - Endpoint that validates JWT and sends a GET request to Spotify's API.
+* [http://localhost:3001/login](http://localhost:3001/login) - Endpoint request a new JWT from Spotify using the authentication workflow
