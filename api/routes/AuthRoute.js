@@ -6,8 +6,6 @@ const spotifyCtrl = require('../controllers/spotify')
 
 router.post('/login', spotifyCtrl.login)
 
-router.get('/search', spotifyCtrl.jwt, (req, res) => {
-    console.log("search page")
-})
+router.post('/search', spotifyCtrl.jwt, spotifyCtrl.search)
 
 module.exports = router;

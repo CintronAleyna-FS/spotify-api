@@ -7,12 +7,12 @@ const SpotifyWebApi = require('spotify-web-api-node');
 exports.jwt = async (req, res, next) => {
     let now = new Date().getTime()
     // set req.spotifyToken to token from DB
-    req.token = await SpotifyToken.find().sort({$natural:-1}).limit(1);
+    req.token = await SpotifyToken.findOne({}).sort({$natural:-1});
     // IF !req.spotifyToken go back to homescreen
     if (!req.token){
-        redirect('/')
-    } else if ( now > req.token[0].expires_in) {
-        const refreshToken = req.token[0].refreshToken
+        res.redirect('http://localhost:3000/')
+    } else if ( now > req.token.expires_in) {
+        const refreshToken = req.token.refreshToken
          // create new spotify web api with credientals
         const spotifyApi = new SpotifyWebApi({
             redirectUri: "http://localhost:3000/",
@@ -23,15 +23,15 @@ exports.jwt = async (req, res, next) => {
         // REFRESH ACCESS TOKEN
         spotifyApi.refreshAccessToken().then(
             (data) => {
-              console.log('The access token has been refreshed!');
-            console.log("DATA : " + data.body)
+                console.log('The access token has been refreshed!');
+                console.log('refreshed token!' + data.body['access_token']);
+                req.token.accessToken = data.body['access_token'];
+                req.token.expires_in = (new Date().getTime()) + req.token.expires_in;
+                req.token.save();
             }).catch((error) => {
                 res.status(400).json({ message: error.message })
             })
-    }else{
-        console.log("Not Expired!")
     }
-    
     return next();
 }
   
@@ -51,7 +51,7 @@ exports.login = (req, res, next) => {
         const spotifyToken = new SpotifyToken({
             accessToken: data.body.access_token,
             refreshToken: data.body.refresh_token,
-            expires_in: (new Date().getTime())+ data.body.expires_in
+            expires_in: (new Date().getTime()) + data.body.expires_in,
         })
         try {
             const newSpotifyToken = spotifyToken.save()
@@ -63,4 +63,28 @@ exports.login = (req, res, next) => {
         console.log(err)
         res.sendStatus(400)
     })
+}
+
+// SEARCH
+
+exports.search = async (req, res, next) => {
+    let search = req.body.search
+    await axios({
+        method: 'GET',
+        url: 'https://api.spotify.com/v1/search',
+        params: {
+          type: 'artist,playlist,show',
+          q: search,
+          limit: 3
+        },
+        headers: { 
+          'Authorization': 'Bearer ' + req.token.accessToken,
+          'Content-Type': 'application/json'
+        }
+      }).then(({data}) => {
+        res.json(data)
+      }).catch((error) => {
+        console.log(error)
+        res.json(error)
+      })
 }
