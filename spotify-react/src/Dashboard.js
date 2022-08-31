@@ -1,5 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import MyNav from './components/MyNav'
+
 import useAuth from './useAuth';
 
 function Dashboard({code}) {
@@ -23,6 +25,7 @@ function Dashboard({code}) {
     }
     return (
         <div>
+            <MyNav code={code}></MyNav>
             <p style={styles.p}>Authorized</p>
             <div>
                 <input 
