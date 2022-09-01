@@ -1,5 +1,6 @@
 import React from 'react';
 import MyNav from './components/MyNav'
+import { BsSpotify } from 'react-icons/bs'
 // SPOTIFY API AUTH URL
 const client_id = process.env.REACT_APP_CLIENT_ID
 const redirect_uri = 'http://localhost:3000/'
@@ -7,10 +8,14 @@ const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${client_id}&
 
 function Login({code}) {
     return (
-        <div>
+        <div className="w-full h-screen">
             <MyNav code={code}></MyNav>
-            <div style={styles.center}>
-                <a style={styles.btn} href={AUTH_URL}>Login with Spotify</a>
+            <div className="flex justify-center h-screen items-center flex-col">
+                <BsSpotify size={40} color="#1cb955" className="mb-1"></BsSpotify>
+                <p className="mb-4 text-xl font-bold">Please Login</p>
+                <p className="mb-6 text-center">In order to search for artists, playlists, or shows <br></br> 
+                you must login to your spotify account</p>
+                <a style={styles.btn} className="text-center rounded-full w-80 h-14 p-1" href={AUTH_URL}>Login</a>
             </div>
         </div>
     );
@@ -21,23 +26,11 @@ export default Login;
 
 const styles = {
     btn: {
-        backgroundColor: "green",
+        backgroundColor: "#1cb955",
         textAlign: 'center',
-        display: 'flex',
-        width: '15rem',
-        padding: '1rem',
         cursor: 'pointer',
         fontSize: '30px',
         color: 'white',
         textDecoration: 'none',
-        borderRadius: '15px'
     },
-    center: {
-        margin: 0,
-        verticalAlign: 'middle',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: '1rem'
-    }
 }

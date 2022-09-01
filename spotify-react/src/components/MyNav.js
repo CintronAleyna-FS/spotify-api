@@ -1,27 +1,31 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { BsSpotify } from 'react-icons/bs'
+import { FaSearch } from 'react-icons/fa'
 
-import whiteSpotifyLogo from '../images/spotify-white-logo.png'
-// BsSpotify
-const MyNav = ({code}) => {
-
+const MyNav = ({code, handleKeyPress, handleChange, search}) => {
   
-    return(
-        <nav style={styles.nav} className='pl-4 flex'>
-            <img src={whiteSpotifyLogo} className=''></img>
+  return(
+      <nav style={styles.nav} className='pl-4 flex h-20'>
+            <BsSpotify size={50} className="mt-auto mb-auto"></BsSpotify>            
             {
             code
-            ? <input 
-            style={styles.searchBar}
-            className='search-bar m-auto p-2 w-4/12'
-            placeholder="Search for artist..."
-            // value={search}
-            // onChange={e => setSearch(e.target.value)}
-            // onKeyPress={handleKeyPress}
-            />
+            ? 
+            <div className='search-bar m-auto w-5/12'>
+              <FaSearch size={32} className="inline p-1 mr-2"/>
+              <input
+                style={styles.searchBar}
+                className='search-bar m-auto p-1 w-11/12'
+                placeholder="Search for artist..."
+                value={search}
+                onChange={handleChange}
+                onKeyPress={handleKeyPress}
+              />
+            </div>
             : <p className="m-auto"></p>
             }
-        </nav>
-    )
+      </nav>
+  )
 }
 export default MyNav;
 
